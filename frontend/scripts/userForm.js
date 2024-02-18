@@ -3,9 +3,9 @@ function loginForm() {
     mainDiv.innerHTML = `
         <div class="login-container">
             <h2>Login</h2>
-            <input type="email" placeholder="Email">
-            <input type="text" placeholder="Password">
-            <button class='login-button'>Login</button>
+            <input type="email" placeholder="Email" class="login-email">
+            <input type="text" placeholder="Password" class="login-password">
+            <button class="login-button">Login</button>
             <p>Don't have an account? Create one <span id="create-account">here</span>.</p>
         </div>
     `;
