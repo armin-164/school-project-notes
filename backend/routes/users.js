@@ -22,18 +22,18 @@ router.post('/login', (req, res) => {
 
   if (checkEmail != '' && checkPassword != '' && req.body.apiKey === process.env.API_KEY) {
 
-  let query = 'SELECT * FROM users';
+  // Only select one row where the Email matches the sent email
+  let selectQuery = 'SELECT * FROM users WHERE Email = ? LIMIT 1';
 
-  connection.query(query, (err, data) => {
+  connection.query(selectQuery, [checkEmail], (err, data) => {
     if (err) console.log('err', err);
     
-    let user = data.find(user => user.Email === checkEmail)
 
-    if (!user || checkPassword !== user.Password) {
+    if (!data[0].Email || checkPassword !== data[0].Password) {
       return res.status(401).json({message: 'User not found / Wrong password'});
     }
 
-    res.json({userId: user.UserID})
+    res.json({userId: data[0].UserID})
   })
   
  }
