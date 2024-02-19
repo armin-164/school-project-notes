@@ -1,1 +1,16 @@
 @import './styles/form';
+@import './styles/navbar';
+@import './styles/maincontent';
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    color: white;
+}
+
+main {
+    display: flex;
+}
