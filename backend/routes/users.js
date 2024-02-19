@@ -29,13 +29,11 @@ router.post('/login', (req, res) => {
     
     let user = data.find(user => user.email === checkEmail)
 
-    if (!user) {
-      return res.status(401).json({message: 'User not found'});
+    if (!user || checkPassword !== user.password) {
+      return res.status(401).json({message: 'User not found / Wrong password'});
     }
 
-    if (checkPassword === user.password) {
-      res.json({userId: user.userId})
-    }
+    res.json({userId: user.userId})
   })
   
  }
