@@ -22,9 +22,13 @@
         gap: 2em;
 
         > .note-card {
-            border: 1px solid red;
-            border-radius: 0.25em;
+            font-family: 'Inter', sans-serif;
+            border: 0.2em solid rgb(230, 47, 47);
+            border-radius: 0.5em;
             width: 20em;
+            padding: 1em;
+            background: linear-gradient(71deg, #080509, #1a171c, #080509);
+            box-shadow: 5px -5px 2px black, 10px -10px 2px rgb(155, 23, 23);
         }
     }
 }
