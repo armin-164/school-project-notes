@@ -60,8 +60,8 @@ function checkLogin() {
 }
 
 function signupForm() {
-    const mainDiv = document.querySelector('main');
-    mainDiv.innerHTML = `
+    const mainElement = document.querySelector('main');
+    mainElement.innerHTML = `
     <div class="signup-container">
         <h2>Create Account</h2>
         <input type="text" class="signup-username" placeholder="Username">
@@ -81,8 +81,8 @@ function signupForm() {
 
 
 function loginForm() {
-    const mainDiv = document.querySelector('main');
-    mainDiv.innerHTML = `
+    const mainElement = document.querySelector('main');
+    mainElement.innerHTML = `
         <div class="login-container">
             <h2>Login</h2>
             <input type="email" placeholder="Email" class="login-email">
