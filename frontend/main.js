@@ -1,4 +1,4 @@
 import './style.scss'
-import displayMainContent from './scripts/userForm';
+import manageUserSession from './scripts/userForm'
 
-displayMainContent();
+manageUserSession();

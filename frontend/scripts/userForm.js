@@ -99,7 +99,7 @@ function loginForm() {
     createAccountSpan.addEventListener('click', signupForm);
 }
 
-function displayMainContent() {
+function manageUserSession() {
     const user = localStorage.getItem('user');
 
     if (!user) {
@@ -107,4 +107,4 @@ function displayMainContent() {
     }
 }
 
-export default displayMainContent;
+export default manageUserSession;
