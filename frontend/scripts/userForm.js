@@ -1,3 +1,36 @@
+function createUser() {
+    let userName = document.querySelector('.signup-username').value;
+    let userEmail = document.querySelector('.signup-email').value.toLowerCase();
+    let userPassword = document.querySelector('.signup-password').value;
+
+    let user = {
+        username: userName,
+        email: userEmail,
+        password: userPassword,
+        apiKey: 'testkey1234',
+    }
+
+    fetch('http://localhost:3000/users/add', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(user)
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.message === 'User added successfully') {
+            loginForm();
+            alert(data.message);
+        }
+
+        else {
+            alert(data.message)
+        }
+    })
+}
+
+
 function checkLogin() {
     const checkEmail = document.querySelector('.login-email').value;
     const checkPassword = document.querySelector('.login-password').value;
@@ -38,6 +71,9 @@ function signupForm() {
         <p>Already have an account? <span id="go-to-login">Login here</span>.</p>
     </div>
     `;
+
+    const signupBtn = document.querySelector('.signup-button');
+    signupBtn.addEventListener('click', createUser);
 
     const goToLoginSpan = document.getElementById('go-to-login');
     goToLoginSpan.addEventListener('click', loginForm);
