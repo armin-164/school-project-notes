@@ -1,0 +1,53 @@
+.login-container, .signup-container {
+    display: flex;
+    flex-direction: column;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 2em;
+    border-radius: 0.5em;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    width: 20em;
+    margin: 0 auto;
+    margin-top: 10em; 
+    
+    h2 {
+      font-family: 'Lato', sans-serif;
+      font-weight: 700;
+      margin-top: 0;
+    }
+    
+    input, button {
+      font-family: 'Lato', sans-serif;
+      margin-bottom: 10px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+    
+    button {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      
+      &:hover {
+        background-color: #0056b3;
+      }
+    }
+    
+    p {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.9em;
+      
+      #create-account, #go-to-login {
+        text-decoration: none;
+        color: #007bff;
+        cursor: pointer;
+        
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+  
