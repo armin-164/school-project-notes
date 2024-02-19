@@ -1,3 +1,5 @@
+import displayMainContent from "./mainContent";
+
 function createUser() {
     let userName = document.querySelector('.signup-username').value;
     let userEmail = document.querySelector('.signup-email').value.toLowerCase();
@@ -56,6 +58,7 @@ function checkLogin() {
         }
 
         localStorage.setItem('user', data.userId);
+        displayMainContent();
     })
 }
 
@@ -104,6 +107,10 @@ function manageUserSession() {
 
     if (!user) {
         loginForm();
+    }
+
+    else {
+        displayMainContent();
     }
 }
 
