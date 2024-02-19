@@ -27,13 +27,13 @@ router.post('/login', (req, res) => {
   connection.query(query, (err, data) => {
     if (err) console.log('err', err);
     
-    let user = data.find(user => user.email === checkEmail)
+    let user = data.find(user => user.Email === checkEmail)
 
-    if (!user || checkPassword !== user.password) {
+    if (!user || checkPassword !== user.Password) {
       return res.status(401).json({message: 'User not found / Wrong password'});
     }
 
-    res.json({userId: user.userId})
+    res.json({userId: user.UserID})
   })
   
  }
@@ -48,7 +48,7 @@ router.post('/add', (req, res) => {
       }
 
       // Select every user in which the email matches the req.body.email
-      const selectQuery = 'SELECT * FROM users WHERE email = ?';
+      const selectQuery = 'SELECT * FROM users WHERE Email = ?';
       connection.query(selectQuery, [req.body.email], (err, data) => {
           if (err) {
               console.log('err', err);
@@ -62,7 +62,7 @@ router.post('/add', (req, res) => {
 
           // Else insert the username, email and password into the users table, the userId will be automatically incremented.
           else {
-              const insertQuery = 'INSERT INTO users (username, email, password) VALUES (?, ?, ?)';
+              const insertQuery = 'INSERT INTO users (Username, Email, Password) VALUES (?, ?, ?)';
               connection.query(insertQuery, [req.body.username, req.body.email, req.body.password], (err, data) => {
                   if (err) {
                       console.log('err', err);
