@@ -1,3 +1,31 @@
+function checkLogin() {
+    const checkEmail = document.querySelector('.login-email').value;
+    const checkPassword = document.querySelector('.login-password').value;
+
+    let user = {
+        email: checkEmail,
+        password: checkPassword,
+        apiKey: 'testkey1234'
+    }
+
+    fetch('http://localhost:3000/users/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(user)
+    })
+    .then(res => res.json())
+    .then(data => {
+        console.log(data)
+        if (!data.userId) {
+            return alert(data.message)
+        }
+
+        localStorage.setItem('user', data.userId);
+    })
+}
+
 function loginForm() {
     const mainDiv = document.querySelector('main');
     mainDiv.innerHTML = `
@@ -11,7 +39,7 @@ function loginForm() {
     `;
 
     const loginBtn = document.querySelector('.login-button');
-    loginBtn.addEventListener('click', console.log("hey"))
+    loginBtn.addEventListener('click', checkLogin);
 
     const createAccountSpan = document.getElementById('create-account');
 }
