@@ -26,6 +26,24 @@ function checkLogin() {
     })
 }
 
+function signupForm() {
+    const mainDiv = document.querySelector('main');
+    mainDiv.innerHTML = `
+    <div class="signup-container">
+        <h2>Create Account</h2>
+        <input type="text" class="signup-username" placeholder="Username">
+        <input type="email" class="signup-email" placeholder="Email">
+        <input type="text" class="signup-password" placeholder="Password">
+        <button class="signup-button">Sign Up</button>
+        <p>Already have an account? <span id="go-to-login">Login here</span>.</p>
+    </div>
+    `;
+
+    const goToLoginSpan = document.getElementById('go-to-login');
+    goToLoginSpan.addEventListener('click', loginForm);
+}
+
+
 function loginForm() {
     const mainDiv = document.querySelector('main');
     mainDiv.innerHTML = `
@@ -42,6 +60,7 @@ function loginForm() {
     loginBtn.addEventListener('click', checkLogin);
 
     const createAccountSpan = document.getElementById('create-account');
+    createAccountSpan.addEventListener('click', signupForm);
 }
 
 function displayMainContent() {
