@@ -18,6 +18,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 
 app.use('/users', usersRouter);
-app.use('./content', userContentRouter);
+app.use('/content', userContentRouter);
 
 module.exports = app;
