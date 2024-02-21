@@ -53,7 +53,10 @@ function viewNote(id) {
 
             viewNoteContainer.innerHTML = `
                 <div class="note">${data[0].Content}</div>
-                <div class="note-options"></div>
+                <div class="note-options">
+                    <span class="edit-note">Edit</span>
+                    <span class="remove-note">Remove</span>
+                </div>
             `;
 
             mainContentDiv.appendChild(viewNoteContainer);
