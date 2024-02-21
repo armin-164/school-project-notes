@@ -52,11 +52,13 @@ function viewNote(id) {
             viewNoteContainer.classList.add('view-note-container');
 
             viewNoteContainer.innerHTML = `
-                <div class="note">${data[0].Content}</div>
+                <h2>${data[0].Title}</h2>
                 <div class="note-options">
-                    <span class="edit-note">Edit</span>
-                    <span class="remove-note">Remove</span>
+                        <button class="edit-note">Edit</span>
+                        <button class="remove-note">Remove</span>
                 </div>
+                <div class="note">${data[0].Content}</div>
+                    
             `;
 
             mainContentDiv.appendChild(viewNoteContainer);
