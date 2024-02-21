@@ -10,8 +10,8 @@ function createElementsForNotes() {
             const mainContentDiv = document.querySelector('.main-content');
             mainContentDiv.removeChild(mainContentDiv.lastChild);
 
-            const noteContainer = document.createElement('div');
-            noteContainer.classList.add('note-container');
+            const allNotesContainer = document.createElement('div');
+            allNotesContainer.classList.add('all-notes-container');
 
             data.forEach(note => {
 
@@ -38,8 +38,8 @@ function createElementsForNotes() {
             noteCard.appendChild(categoryElement);
             noteCard.appendChild(lastUpdateAtElement);
 
-            noteContainer.appendChild(noteCard);
-            mainContentDiv.appendChild(noteContainer);
+            allNotesContainer.appendChild(noteCard);
+            mainContentDiv.appendChild(allNotesContainer);
 
             })
         })
