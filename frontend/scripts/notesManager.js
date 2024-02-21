@@ -15,7 +15,14 @@ function createNote() {
         </div>
     `;
     
-    
+      // Retrieve editor for note-content
+      const existingEditor = tinymce.get('note-content');
+
+      // Check if editor exists and remove it since it wouldnt work otherwise
+      // due to editor duplications on element
+      if (existingEditor) {
+          existingEditor.remove();
+      }
 
     mainContentDiv.appendChild(editorContainerDiv);
     tinymce.init({
