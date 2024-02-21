@@ -60,25 +60,49 @@
     ///////// Styling for viewing mode container \\\\\\\\\\
     .view-note-container {
         display: flex;
-        justify-content: center;
+        flex-direction: column;
         gap: 1em;
-        padding: 4em;
+        padding: 2em 5em;
+
+        > .top-view-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5em 2em;
+
+            > h2 {
+                font-size: 2em;
+                font-weight: 800;
+                font-family: 'Inter', sans-serif;
+                margin: 0;
+                color: lightgray;
+                
+            }
+
+            > .note-options {
+                display: flex;
+                gap: 1em;
+
+                > .create-note, .remove-note {
+                    display: block;
+                    font-size: 3em;
+                    color: rgb(122, 120, 120);
+                    cursor: pointer;
+
+                    &:active {
+                        box-shadow: 0 0 30px black;
+                    }
+                }
+            }
+        }
 
         > .note {
-            flex: 5;
-            min-height: 300px;
-            background-color: rgb(40, 40, 40);
+            padding: 0.5em 2em;
             border: 1px solid lightgray;
             border-radius: 1em;
-            padding: 1em;
-        }
-
-        > .note-options {
-            flex: 2;
-        }
-
-        > div {
-            border: 1px solid blue;
+            background-color: rgb(35,35,35);
+            color: white;
+            font-family: 'Inter';
         }
     }
 }
