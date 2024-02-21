@@ -1,10 +1,10 @@
 import createNote from './notesManager';
 
 function createElementsForNotes() {
-    const user = localStorage.getItem('user');
+    const userId = localStorage.getItem('user');
 
-    if (user) {
-        fetch(`http://localhost:3000/content/notes/${user}`)
+    if (userId) {
+        fetch(`http://localhost:3000/content/notes/user/${userId}`)
         .then(res => res.json())
         .then(data => {
             const mainContentDiv = document.querySelector('.main-content');
