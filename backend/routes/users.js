@@ -36,7 +36,7 @@ router.post('/login', (req, res) => {
       return res.status(401).json({message: 'Wrong password'});
     }
 
-    res.json({userId: data[0].UserID})
+    res.json({userId: data[0].UserID, username: data[0].Username})
   })
   
  }
