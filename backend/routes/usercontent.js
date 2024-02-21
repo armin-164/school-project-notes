@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 const connection = require('../lib/connect');
 
-router.get('/notes/:id', (req, res) => {
+router.get('/notes/user/:id', (req, res) => {
     let user = req.params.id;
 
     let query = 'SELECT * FROM notes WHERE User = ?';
