@@ -33,6 +33,28 @@ function createNote() {
     console.log(saveNoteButton)
 }
 
+function viewNote(id) {
+    fetch(`http://localhost:3000/content/notes/${id}`)
+    .then(res => res.json())
+    .then(data => {
+        if (data.length === 1) {
+            const mainContentDiv = document.querySelector('.main-content');
+            mainContentDiv.removeChild(mainContentDiv.lastChild);
+
+            const viewNoteContainer = document.createElement('div');
+            viewNoteContainer.classList.add('view-note-container');
+
+            viewNoteContainer.innerHTML = `
+                <div class="note">${data[0].Content}</div>
+                <div class="note-options"></div>
+            `;
+
+            mainContentDiv.appendChild(viewNoteContainer);
+            
+        }
+    })
+}
+
 
 function addNoteToDatabase() {
     const noteData = {
@@ -50,7 +72,11 @@ function addNoteToDatabase() {
         body: JSON.stringify(noteData)
     })
     .then(res => res.json())
-    .then(data => console.log(data))
+    .then(data => {
+        if (data.message === 'User added successfully') {
+            viewNote(data.NoteID);
+        }
+    })
     
 }
 
