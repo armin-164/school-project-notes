@@ -57,7 +57,7 @@ function checkLogin() {
             return alert(data.message)
         }
 
-        localStorage.setItem('user', data.userId);
+        localStorage.setItem('userId', data.userId);
         displayMainContent();
     })
 }
@@ -103,7 +103,7 @@ function loginForm() {
 }
 
 function manageUserSession() {
-    const user = localStorage.getItem('user');
+    const user = localStorage.getItem('userId');
 
     if (!user) {
         loginForm();

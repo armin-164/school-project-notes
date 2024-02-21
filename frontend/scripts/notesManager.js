@@ -65,7 +65,7 @@ function viewNote(id) {
 
 function addNoteToDatabase() {
     const noteData = {
-        User: localStorage.getItem('user'),
+        User: localStorage.getItem('userId'),
         Title: document.querySelector('.note-title').value,
         Content: document.getElementById('note-content').value
     }

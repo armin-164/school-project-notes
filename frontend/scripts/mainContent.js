@@ -1,7 +1,7 @@
 import { createNote, viewNote} from './notesManager';
 
 function createElementsForNotes() {
-    const userId = localStorage.getItem('user');
+    const userId = localStorage.getItem('userId');
 
     if (userId) {
         fetch(`http://localhost:3000/content/notes/user/${userId}`)
