@@ -58,6 +58,7 @@ function checkLogin() {
         }
 
         localStorage.setItem('userId', data.userId);
+        localStorage.setItem('username', data.username);
         displayMainContent();
     })
 }
