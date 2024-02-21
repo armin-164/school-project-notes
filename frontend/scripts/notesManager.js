@@ -87,4 +87,4 @@ function addNoteToDatabase() {
     
 }
 
-export default createNote;
+export { createNote, viewNote };
