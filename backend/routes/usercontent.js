@@ -40,5 +40,19 @@ router.post('/notes/add', (req, res) => {
     });
 })
 
+router.get('/notes/:id', (req, res) => {
+    const selectQuery = 'SELECT * FROM notes WHERE NoteID = ?';
+    
+    connection.query(selectQuery, [req.params.id], (err, data) => {
+        console.log(data)
+        if (err) console.log('err', err);
+        
+        if (data.length < 1) {
+            return res.json({ message: 'Data not found'})
+        }
+        res.json(data);
+      })
+})
+
 
 module.exports = router;
