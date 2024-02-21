@@ -1,3 +1,5 @@
+import createNote from './notesManager';
+
 function createElementsForNotes() {
     const user = localStorage.getItem('user');
 
@@ -5,7 +7,11 @@ function createElementsForNotes() {
         fetch(`http://localhost:3000/content/notes/${user}`)
         .then(res => res.json())
         .then(data => {
-            const noteContainer = document.querySelector('.note-container');
+            const mainContentDiv = document.querySelector('.main-content');
+            mainContentDiv.removeChild(mainContentDiv.lastChild);
+
+            const noteContainer = document.createElement('div');
+            noteContainer.classList.add('note-container');
 
             data.forEach(note => {
 
@@ -32,6 +38,7 @@ function createElementsForNotes() {
             noteCard.appendChild(lastUpdateAtElement);
 
             noteContainer.appendChild(noteCard);
+            mainContentDiv.appendChild(noteContainer);
 
             })
         })
@@ -39,7 +46,7 @@ function createElementsForNotes() {
 }
 
 
-function displayMainContent() {
+function displayMainContent(str) {
     const mainElement = document.querySelector('main');
     mainElement.innerHTML = `
         <nav>
@@ -48,13 +55,19 @@ function displayMainContent() {
         <div class="main-content">
             <div class="top-bar">
                 <p>Search</p>
-            </div>
-            <div class="note-container">
-             
+                <button class="create-note">Create</button>
             </div>
         </div>
     `;
-    createElementsForNotes();
+
+    if (str === 'main-content') {
+        createElementsForNotes();
+    }
+
+    const createNoteBtn = document.querySelector('.create-note');
+    console.log(createNoteBtn)
+
+    createNoteBtn.addEventListener('click', createNote)
 }
 
 
