@@ -13,8 +13,8 @@ function viewNote(id) {
                 <div class="top-view-section">
                     <h2>${data[0].Title}</h2>
                     <div class="note-options">
-                    <span class="material-symbols-outlined create-note">edit</span>
-                    <span class="material-symbols-outlined remove-note">delete</span>
+                        <span class="material-symbols-outlined edit-note">edit</span>
+                        <span class="material-symbols-outlined remove-note">delete</span>
                     </div>
                 </div>
                 <div class="note">${data[0].Content}</div>
@@ -22,6 +22,9 @@ function viewNote(id) {
             `;
 
             mainContentDiv.appendChild(viewNoteContainer);
+
+            const editNote = document.querySelector('.edit-note');
+            editNote.addEventListener('click', () => createNote(id))
             
         }
     })
@@ -52,7 +55,24 @@ function addNoteToDatabase() {
     
 }
 
-function createNote() {
+function updateNote(id) {
+    const noteData = {
+        NoteID: id,
+        Title: document.querySelector('.note-title').value,
+        Content: document.getElementById('note-content').value
+    }
+
+    fetch('http://localhost:3000/content/notes/update', {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(noteData)
+    })
+    
+}
+
+function createNote(id) {
     const mainContentDiv = document.querySelector('.main-content');
     mainContentDiv.removeChild(mainContentDiv.lastChild);
 
@@ -90,8 +110,23 @@ function createNote() {
     })
 
     const saveNoteButton = document.querySelector('.save-note-button');
-    saveNoteButton.addEventListener('click', addNoteToDatabase);
-    console.log(saveNoteButton)
+    if (!id) {
+        saveNoteButton.addEventListener('click', addNoteToDatabase);
+    }
+    else {
+
+        fetch(`http://localhost:3000/content/notes/${id}`)
+        .then(res => res.json())
+        .then(data => {
+            const noteTitle = document.querySelector('.note-title');
+            const noteContent = document.getElementById('note-content');
+
+            noteTitle.value = data[0].Title;
+            noteContent.value = data[0].Content;
+            saveNoteButton.addEventListener('click',() => updateNote(id));
+
+        })
+    }
 }
 
 export { createNote, viewNote };
