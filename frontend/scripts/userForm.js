@@ -110,7 +110,7 @@ function manageUserSession() {
     }
 
     else {
-        displayMainContent();
+        displayMainContent('main-content');
     }
 }
 
