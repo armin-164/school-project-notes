@@ -52,10 +52,12 @@ function viewNote(id) {
             viewNoteContainer.classList.add('view-note-container');
 
             viewNoteContainer.innerHTML = `
-                <h2>${data[0].Title}</h2>
-                <div class="note-options">
-                        <button class="edit-note">Edit</span>
-                        <button class="remove-note">Remove</span>
+                <div class="top-view-section">
+                    <h2>${data[0].Title}</h2>
+                    <div class="note-options">
+                    <span class="material-symbols-outlined create-note">edit</span>
+                    <span class="material-symbols-outlined remove-note">delete</span>
+                    </div>
                 </div>
                 <div class="note">${data[0].Content}</div>
                     
