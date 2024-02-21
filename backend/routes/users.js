@@ -27,10 +27,13 @@ router.post('/login', (req, res) => {
 
   connection.query(selectQuery, [checkEmail], (err, data) => {
     if (err) console.log('err', err);
-    
 
-    if (!data[0].Email || checkPassword !== data[0].Password) {
-      return res.status(401).json({message: 'User not found / Wrong password'});
+    if (data.length < 1) {
+      return res.status(401).json({message: 'User not found'});
+    }
+
+    if (checkPassword !== data[0].Password) {
+      return res.status(401).json({message: 'Wrong password'});
     }
 
     res.json({userId: data[0].UserID})
