@@ -51,7 +51,7 @@ function displayMainContent(str) {
     const mainElement = document.querySelector('main');
     mainElement.innerHTML = `
         <nav>
-           <span class="username">username</span>
+           <span class="username">${localStorage.getItem('username')}</span>
         </nav>
         <div class="main-content">
             <div class="top-bar">
