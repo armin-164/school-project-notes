@@ -37,4 +37,47 @@
             }
         }
     }
+
+    //////////// Styling for note editor/creator \\\\\\\\\\\\\\\
+    
+    .edit-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+
+        > .content-container {
+
+            > .note-content {
+                border: 1px solid blue;
+            }
+        }
+    }
+
+
+    ///////// Styling for viewing mode container \\\\\\\\\\
+    .view-note-container {
+        display: flex;
+        justify-content: center;
+        gap: 1em;
+        padding: 4em;
+
+        > .note {
+            flex: 5;
+            min-height: 300px;
+            background-color: rgb(40, 40, 40);
+            border: 1px solid lightgray;
+            border-radius: 1em;
+            padding: 1em;
+        }
+
+        > .note-options {
+            flex: 2;
+        }
+
+        > div {
+            border: 1px solid blue;
+        }
+    }
 }
