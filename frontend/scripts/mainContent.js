@@ -55,7 +55,7 @@ function displayMainContent(str) {
         </nav>
         <div class="main-content">
             <div class="top-bar">
-                <p>Search</p>
+                <button class="go-home-page-button">Home</button>
                 <button class="create-note">Create</button>
             </div>
         </div>
@@ -64,6 +64,9 @@ function displayMainContent(str) {
     if (str === 'main-content') {
         createElementsForNotes();
     }
+
+    const goHomePageBtn = document.querySelector('.go-home-page-button');
+    goHomePageBtn.addEventListener('click', createElementsForNotes);
 
     const createNoteBtn = document.querySelector('.create-note');
     createNoteBtn.addEventListener('click', createNote)
