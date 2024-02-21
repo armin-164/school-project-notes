@@ -1,4 +1,4 @@
-import createNote from './notesManager';
+import { createNote, viewNote} from './notesManager';
 
 function createElementsForNotes() {
     const userId = localStorage.getItem('user');
@@ -15,8 +15,9 @@ function createElementsForNotes() {
 
             data.forEach(note => {
 
-                const noteCard = document.createElement('div');
+            const noteCard = document.createElement('div');
             noteCard.classList.add('note-card');
+            noteCard.addEventListener('click', () => viewNote(note.NoteID))
 
             const titleElement = document.createElement('h2');
             titleElement.textContent = note.Title;
@@ -65,8 +66,6 @@ function displayMainContent(str) {
     }
 
     const createNoteBtn = document.querySelector('.create-note');
-    console.log(createNoteBtn)
-
     createNoteBtn.addEventListener('click', createNote)
 }
 
