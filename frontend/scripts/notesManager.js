@@ -1,3 +1,17 @@
+function deleteNote(id) {
+    const noteData = {
+        NoteID: id
+    }
+
+    fetch('http://localhost:3000/content/notes/delete', {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(noteData)
+    })
+}
+
 function viewNote(id) {
     fetch(`http://localhost:3000/content/notes/${id}`)
     .then(res => res.json())
@@ -25,6 +39,9 @@ function viewNote(id) {
 
             const editNote = document.querySelector('.edit-note');
             editNote.addEventListener('click', () => createNote(id))
+
+            const deleteNoteBtn = document.querySelector('.delete-note');
+            deleteNoteBtn.addEventListener('click', () => deleteNote(id));
             
         }
     })
