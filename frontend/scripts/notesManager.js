@@ -123,7 +123,10 @@ function createNote(id) {
 
             noteTitle.value = data[0].Title;
             noteContent.value = data[0].Content;
-            saveNoteButton.addEventListener('click',() => updateNote(id));
+            saveNoteButton.addEventListener('click',() => {
+                updateNote(id);
+                viewNote(id);
+            });
 
         })
     }
