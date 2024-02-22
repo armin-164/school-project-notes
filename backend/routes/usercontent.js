@@ -40,6 +40,20 @@ router.post('/notes/add', (req, res) => {
     });
 })
 
+router.delete('/notes/delete', (req, res) => {
+
+    const deleteQuery = 'DELETE FROM notes WHERE NoteID = ?'
+
+    connection.query(deleteQuery, [req.body.NoteID], (err, data) => {
+        if (err) {
+            console.log('err', err);
+            return res.status(500).json({ message: 'Internal server error' });
+        }
+        
+        res.status(201).json({ message: 'Note has been deleted' });
+    });
+})
+
 router.get('/notes/:id', (req, res) => {
     const selectQuery = 'SELECT * FROM notes WHERE NoteID = ?';
     
