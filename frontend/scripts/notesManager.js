@@ -14,7 +14,7 @@ function viewNote(id) {
                     <h2>${data[0].Title}</h2>
                     <div class="note-options">
                         <span class="material-symbols-outlined edit-note">edit</span>
-                        <span class="material-symbols-outlined remove-note">delete</span>
+                        <span class="material-symbols-outlined delete-note">delete</span>
                     </div>
                 </div>
                 <div class="note">${data[0].Content}</div>
