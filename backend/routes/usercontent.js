@@ -54,5 +54,16 @@ router.get('/notes/:id', (req, res) => {
       })
 })
 
+router.patch('/notes/update', (req, res) => {
+    const updateQuery = 'UPDATE notes SET Title = ?, Content = ? WHERE NoteID = ?';
+    
+    connection.query(updateQuery, [req.body.Title, req.body.Content, req.body.NoteID], (err, data) => {
+        console.log(data)
+        if (err) console.log('err', err);
+        
+        res.json(data);
+      })
+})
+
 
 module.exports = router;
