@@ -91,7 +91,10 @@ function updateNote(id) {
 
 function createNote(id) {
     const mainContentDiv = document.querySelector('.main-content');
-    mainContentDiv.removeChild(mainContentDiv.lastChild);
+
+    if (mainContentDiv.children.length === 2) {
+        mainContentDiv.removeChild(mainContentDiv.lastChild);
+    }
 
     const editorContainerDiv = document.createElement('div');
     editorContainerDiv.classList.add('edit-container');
