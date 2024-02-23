@@ -8,7 +8,10 @@ function createElementsForNotes() {
         .then(res => res.json())
         .then(data => {
             const mainContentDiv = document.querySelector('.main-content');
-            mainContentDiv.removeChild(mainContentDiv.lastChild);
+
+            if (mainContentDiv.children.length === 2) {
+                mainContentDiv.removeChild(mainContentDiv.lastChild);
+            }
 
             const allNotesContainer = document.createElement('div');
             allNotesContainer.classList.add('all-notes-container');
@@ -69,7 +72,7 @@ function displayMainContent(str) {
     goHomePageBtn.addEventListener('click', createElementsForNotes);
 
     const createNoteBtn = document.querySelector('.create-note');
-    createNoteBtn.addEventListener('click', createNote)
+    createNoteBtn.addEventListener('click', () => createNote());
 }
 
 
