@@ -16,35 +16,37 @@ function createElementsForNotes() {
             const allNotesContainer = document.createElement('div');
             allNotesContainer.classList.add('all-notes-container');
 
-            data.forEach(note => {
+            if (data.length >= 1) {
+                data.forEach(note => {
 
-            const noteCard = document.createElement('div');
-            noteCard.classList.add('note-card');
-            noteCard.addEventListener('click', () => viewNote(note.NoteID))
-
-            const titleElement = document.createElement('h2');
-            titleElement.textContent = note.Title;
-
-            const contentElement = document.createElement('p');
-            contentElement.textContent = note.Content;
-
-            const categoryElement = document.createElement('p');
-            categoryElement.textContent = `Category: ${note.Category}`;
-
-            const lastUpdateAtElement = document.createElement('p');
-            lastUpdateAtElement.innerHTML = `
-            <span class="material-symbols-outlined">schedule</span>
-            Last Update: ${new Date(note.LastUpdateAt).toLocaleDateString()}`;
-
-            noteCard.appendChild(titleElement);
-            noteCard.appendChild(contentElement);
-            noteCard.appendChild(categoryElement);
-            noteCard.appendChild(lastUpdateAtElement);
-
-            allNotesContainer.appendChild(noteCard);
-            mainContentDiv.appendChild(allNotesContainer);
-
-            })
+                    const noteCard = document.createElement('div');
+                    noteCard.classList.add('note-card');
+                    noteCard.addEventListener('click', () => viewNote(note.NoteID))
+        
+                    const titleElement = document.createElement('h2');
+                    titleElement.textContent = note.Title;
+        
+                    const contentElement = document.createElement('p');
+                    contentElement.textContent = note.Content;
+        
+                    const categoryElement = document.createElement('p');
+                    categoryElement.textContent = `Category: ${note.Category}`;
+        
+                    const lastUpdateAtElement = document.createElement('p');
+                    lastUpdateAtElement.innerHTML = `
+                    <span class="material-symbols-outlined">schedule</span>
+                    Last Update: ${new Date(note.LastUpdateAt).toLocaleDateString()}`;
+        
+                    noteCard.appendChild(titleElement);
+                    noteCard.appendChild(contentElement);
+                    noteCard.appendChild(categoryElement);
+                    noteCard.appendChild(lastUpdateAtElement);
+        
+                    allNotesContainer.appendChild(noteCard);
+                    mainContentDiv.appendChild(allNotesContainer);
+        
+                    })
+            }
         })
     }
 }
