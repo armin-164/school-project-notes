@@ -134,10 +134,16 @@ function createNote(id) {
         }
       });
       
-
+    const noteTitle = document.querySelector('.note-title');
     const saveNoteButton = document.querySelector('.save-note-button');
     if (!id) {
-        saveNoteButton.addEventListener('click', addNoteToDatabase);
+        
+        saveNoteButton.addEventListener('click', () => {
+            if (noteTitle.value === '') {
+                return alert('You need to add a title');
+            }
+            addNoteToDatabase();
+        });
     }
     else {
 
@@ -150,6 +156,9 @@ function createNote(id) {
             noteTitle.value = data[0].Title;
             noteContent.value = data[0].Content;
             saveNoteButton.addEventListener('click',() => {
+                if (noteTitle.value === '') {
+                    return alert('You need to add a title');
+                }
                 updateNote(id);
                 viewNote(id);
             });
