@@ -120,14 +120,20 @@ function createNote(id) {
 
     mainContentDiv.appendChild(editorContainerDiv);
     tinymce.init({
-        selector: '#note-content',
-
+        selector: "#note-content",  
+        plugins: "textcolor colorpicker fontsize quickbars autoresize",
+        toolbar: "undo redo | formatselect | bold italic underline strikethrough | forecolor backcolor | fontsizeselect | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat",
+        quickbars_selection_toolbar: "bold italic | forecolor backcolor | fontsizeselect",
+        fontsize_formats: "8px 10px 12px 14px 18px 24px 36px",
+        
+      
         setup: (editor) => {
-            editor.on('change', () => {
-                editor.save();
-            })
+          editor.on('change', () => {
+            editor.save();
+          })
         }
-    })
+      });
+      
 
     const saveNoteButton = document.querySelector('.save-note-button');
     if (!id) {
