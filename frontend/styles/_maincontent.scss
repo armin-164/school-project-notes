@@ -10,8 +10,15 @@
         align-items: center;
         border-left: 1px solid white;
 
-        > p {
-            margin: 0 0 0 0.5em;
+        > button {
+            color: rgb(94, 94, 94);
+            border: none;
+            margin-left: 2em;
+            width: 8em;
+            height: 2em;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
         }
     }
 
