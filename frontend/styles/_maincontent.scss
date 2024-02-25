@@ -100,9 +100,12 @@
             padding: 0.5em 2em;
             border: 1px solid lightgray;
             border-radius: 1em;
-            background-color: rgb(35,35,35);
-            color: white;
+            background-color: white;
             font-family: 'Inter';
         }
     }
+}
+
+.tox-platform-touch {
+    height: 400px !important;
 }
