@@ -1,3 +1,5 @@
+import displayMainContent from './mainContent';
+
 function deleteNote(id) {
     const noteData = {
         NoteID: id
@@ -41,7 +43,12 @@ function viewNote(id) {
             editNote.addEventListener('click', () => createNote(id))
 
             const deleteNoteBtn = document.querySelector('.delete-note');
-            deleteNoteBtn.addEventListener('click', () => deleteNote(id));
+            deleteNoteBtn.addEventListener('click', () => {
+                deleteNote(id);
+                setTimeout(() => {
+                    displayMainContent('main-content');          
+                }, 1000);
+            });
             
         }
     })
