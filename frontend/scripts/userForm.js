@@ -1,3 +1,5 @@
+import displayMainContent from "./mainContent";
+
 function createUser() {
     let userName = document.querySelector('.signup-username').value;
     let userEmail = document.querySelector('.signup-email').value.toLowerCase();
@@ -55,13 +57,15 @@ function checkLogin() {
             return alert(data.message)
         }
 
-        localStorage.setItem('user', data.userId);
+        localStorage.setItem('userId', data.userId);
+        localStorage.setItem('username', data.username);
+        displayMainContent();
     })
 }
 
 function signupForm() {
-    const mainDiv = document.querySelector('main');
-    mainDiv.innerHTML = `
+    const mainElement = document.querySelector('main');
+    mainElement.innerHTML = `
     <div class="signup-container">
         <h2>Create Account</h2>
         <input type="text" class="signup-username" placeholder="Username">
@@ -81,8 +85,8 @@ function signupForm() {
 
 
 function loginForm() {
-    const mainDiv = document.querySelector('main');
-    mainDiv.innerHTML = `
+    const mainElement = document.querySelector('main');
+    mainElement.innerHTML = `
         <div class="login-container">
             <h2>Login</h2>
             <input type="email" placeholder="Email" class="login-email">
@@ -99,12 +103,16 @@ function loginForm() {
     createAccountSpan.addEventListener('click', signupForm);
 }
 
-function displayMainContent() {
-    const user = localStorage.getItem('user');
+function manageUserSession() {
+    const user = localStorage.getItem('userId');
 
     if (!user) {
         loginForm();
     }
+
+    else {
+        displayMainContent('main-content');
+    }
 }
 
-export default displayMainContent;
+export default manageUserSession;

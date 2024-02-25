@@ -6,6 +6,7 @@ const cors = require('cors');
 require('dotenv').config({ path:'./example.env' });
 
 var usersRouter = require('./routes/users');
+const userContentRouter = require('./routes/usercontent');
 
 var app = express();
 
@@ -17,5 +18,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 
 app.use('/users', usersRouter);
+app.use('/content', userContentRouter);
 
 module.exports = app;

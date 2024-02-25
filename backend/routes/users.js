@@ -22,18 +22,21 @@ router.post('/login', (req, res) => {
 
   if (checkEmail != '' && checkPassword != '' && req.body.apiKey === process.env.API_KEY) {
 
-  let query = 'SELECT * FROM users';
+  // Only select one row where the Email matches the sent email
+  let selectQuery = 'SELECT * FROM users WHERE Email = ? LIMIT 1';
 
-  connection.query(query, (err, data) => {
+  connection.query(selectQuery, [checkEmail], (err, data) => {
     if (err) console.log('err', err);
-    
-    let user = data.find(user => user.email === checkEmail)
 
-    if (!user || checkPassword !== user.password) {
-      return res.status(401).json({message: 'User not found / Wrong password'});
+    if (data.length < 1) {
+      return res.status(401).json({message: 'User not found'});
     }
 
-    res.json({userId: user.userId})
+    if (checkPassword !== data[0].Password) {
+      return res.status(401).json({message: 'Wrong password'});
+    }
+
+    res.json({userId: data[0].UserID, username: data[0].Username})
   })
   
  }
@@ -48,7 +51,7 @@ router.post('/add', (req, res) => {
       }
 
       // Select every user in which the email matches the req.body.email
-      const selectQuery = 'SELECT * FROM users WHERE email = ?';
+      const selectQuery = 'SELECT * FROM users WHERE Email = ?';
       connection.query(selectQuery, [req.body.email], (err, data) => {
           if (err) {
               console.log('err', err);
@@ -62,7 +65,7 @@ router.post('/add', (req, res) => {
 
           // Else insert the username, email and password into the users table, the userId will be automatically incremented.
           else {
-              const insertQuery = 'INSERT INTO users (username, email, password) VALUES (?, ?, ?)';
+              const insertQuery = 'INSERT INTO users (Username, Email, Password) VALUES (?, ?, ?)';
               connection.query(insertQuery, [req.body.username, req.body.email, req.body.password], (err, data) => {
                   if (err) {
                       console.log('err', err);
