@@ -110,7 +110,7 @@ function createNote(id) {
         <div class="content-container">
             <div class="top-section-editor">
                 <input type="text" placeholder="Title" class="note-title">
-                <button class="save-note-button">ye</button>
+                <button class="save-note-button">Save</button>
             </div>
             <textarea id="note-content"></textarea>
         </div>
