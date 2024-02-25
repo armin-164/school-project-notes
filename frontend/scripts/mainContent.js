@@ -26,22 +26,8 @@ function createElementsForNotes() {
                     const titleElement = document.createElement('h2');
                     titleElement.textContent = note.Title;
         
-                    const contentElement = document.createElement('p');
-                    contentElement.textContent = note.Content;
-        
-                    const categoryElement = document.createElement('p');
-                    categoryElement.textContent = `Category: ${note.Category}`;
-        
-                    const lastUpdateAtElement = document.createElement('p');
-                    lastUpdateAtElement.innerHTML = `
-                    <span class="material-symbols-outlined">schedule</span>
-                    Last Update: ${new Date(note.LastUpdateAt).toLocaleDateString()}`;
-        
-                    noteCard.appendChild(titleElement);
-                    noteCard.appendChild(contentElement);
-                    noteCard.appendChild(categoryElement);
-                    noteCard.appendChild(lastUpdateAtElement);
-        
+       
+                    noteCard.appendChild(titleElement);        
                     allNotesContainer.appendChild(noteCard);
                     mainContentDiv.appendChild(allNotesContainer);
         
